@@ -6,6 +6,7 @@ import { CodeViewer } from "./components/CodeViewer";
 import { TableOfContents } from "./components/TableOfContents";
 import { SearchModal } from "./components/SearchModal";
 import { CliModal } from "./components/CliModal";
+import { MobileNoticeBanner } from "./components/MobileNoticeBanner";
 import { ALL_DOCS, getFileContent, DocItem } from "./docs-data";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GithubIcon } from "./components/GithubIcon";
@@ -93,20 +94,26 @@ export const App: React.FC = () => {
               className="fixed inset-0 bg-black/70 backdrop-blur-sm"
               onClick={() => setMobileMenuOpen(false)}
             />
-            <div className="relative w-80 max-w-full h-full bg-[#0b0f17] shadow-2xl">
+            <div className="relative w-80 max-w-[85vw] h-full bg-[#0b0f17] shadow-2xl flex flex-col z-10 animate-in slide-in-from-left duration-200">
               <Sidebar
                 activeDocId={activeDocId}
                 onSelectDoc={(id: string) => setActiveDocId(id)}
                 onCloseMobileMenu={() => setMobileMenuOpen(false)}
+                isMobileDrawer={true}
               />
             </div>
           </div>
         )}
 
         {/* Artigo Central */}
-        <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8 max-w-4xl">
+        <main className="flex-1 min-w-0 px-3.5 sm:px-8 lg:px-12 py-6 sm:py-8 max-w-4xl">
+          {/* Aviso para Usuários Mobile */}
+          <div className="block md:hidden">
+            <MobileNoticeBanner />
+          </div>
+
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-6">
+          <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-4 sm:mb-6 overflow-x-auto pb-1 text-nowrap">
             <span>TypeScript Hub</span>
             <span>/</span>
             <span className="text-slate-400 capitalize">{currentDoc.filePath.split("/")[0]}</span>

@@ -98,6 +98,14 @@ export const CliModal: React.FC<CliModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
+        {/* Mobile Notice inside modal */}
+        <div className="mx-4 mt-4 p-3 rounded-lg bg-emerald-950/30 border border-emerald-500/30 text-xs text-emerald-300 flex items-start gap-2">
+          <span className="text-base shrink-0">💻</span>
+          <p>
+            <strong>Atenção:</strong> Estes comandos são feitos para rodar no terminal do seu computador com Node.js. No celular você pode consultar a função de cada um e copiá-los para sua máquina.
+          </p>
+        </div>
+
         {/* Content list */}
         <div className="max-h-[60vh] overflow-y-auto p-4 space-y-3">
           {COMMANDS.map((c) => (
