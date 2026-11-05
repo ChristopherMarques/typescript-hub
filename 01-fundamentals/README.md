@@ -10,7 +10,8 @@ Bem-vindo ao primeiro módulo do **TypeScript Hub**! Este módulo foi concebido 
 
 ```mermaid
 flowchart TD
-    A["01-why-typescript.md<br/>Runtime vs Compile Time"] --> B["02-primitives-and-inference.md<br/>Tipos Primitivos, Tuplas & Imutabilidade"]
+    Start["00-node-npm-and-typescript-essence.md<br/>Node, npm, Essência do TS & Onde NÃO usar"] --> A["01-why-typescript.md<br/>Runtime vs Compile Time"]
+    A --> B["02-primitives-and-inference.md<br/>Tipos Primitivos, Tuplas & Imutabilidade"]
     B --> C["03-interfaces-types-and-unions.md<br/>Contratos & Discriminated Unions"]
     C --> D["04-generics-mastery.md<br/>Generics como Funções de Tipos"]
     D --> E["05-utility-types-and-narrowing.md<br/>Utility Types & Type Guards"]
@@ -50,6 +51,7 @@ Uma das regras de ouro deste repositório e da indústria de software em 2026 é
 
 | Arquivo | Tópicos Centrais | Nível |
 | :--- | :--- | :--- |
+| **[`00-node-npm-and-typescript-essence.md`](./00-node-npm-and-typescript-essence.md)** | Como instalar o Node.js e npm, o que é o TS em essência, por que usar em apps grandes e **onde NÃO faz sentido usar**. | Zero Absoluto |
 | **[`01-why-typescript.md`](./01-why-typescript.md)** | Runtime vs Compile Time, Soundness, Analogia do Detector de Metal. | Iniciante |
 | **[`02-primitives-and-inference.md`](./02-primitives-and-inference.md)** | `string`, `number`, `boolean`, `readonly`, Tuplas, `as const`. | Iniciante |
 | **[`03-interfaces-types-and-unions.md`](./03-interfaces-types-and-unions.md)** | `interface` vs `type`, Discriminated Unions, Estados Impossíveis. | Intermediário |

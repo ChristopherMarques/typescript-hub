@@ -68,6 +68,12 @@ export const DOC_SECTIONS: DocSection[] = [
         filePath: "01-fundamentals/README.md",
       },
       {
+        id: "m1-intro",
+        title: "00. Node, npm & Essência do TypeScript",
+        badge: "Início",
+        filePath: "01-fundamentals/00-node-npm-and-typescript-essence.md",
+      },
+      {
         id: "m1-why",
         title: "01. Runtime vs Compile Time",
         filePath: "01-fundamentals/01-why-typescript.md",

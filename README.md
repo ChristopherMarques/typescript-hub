@@ -54,7 +54,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    M1["01 - Fundamentos Estritos<br/>• Runtime vs Compile Time<br/>• Primitivos & Tuplas<br/>• Discriminated Unions<br/>• Generics & Utility Types"] --> M2["02 - Ecossistema 360º (2026)<br/>• Web & Next.js App Router<br/>• Backend: Node, Bun & Fastify<br/>• Mobile (Expo) & Desktop (Tauri)<br/>• Engines, CLIs & AI Agents"]
+    M1["01 - Fundamentos Estritos<br/>• Node, npm & Essência do TS<br/>• Onde NÃO usar TypeScript<br/>• Runtime vs Compile Time<br/>• Primitivos, Generics & Unions"] --> M2["02 - Ecossistema 360º (2026)<br/>• Web & Next.js App Router<br/>• Backend: Node, Bun & Fastify<br/>• Mobile (Expo) & Desktop (Tauri)<br/>• Engines, CLIs & AI Agents"]
     M2 --> M3["03 - Arquitetura & SOLID<br/>• Clean Code & Calisthenics<br/>• S.O.L.I.D. Deep Dive<br/>• Clean Arch & DDD Layers<br/>• God Class vs Refatoração"]
     M3 --> M4["04 - Estudos de Caso Reais<br/>• mini-seller (Domínio)<br/>• sawabona-forms (Generics)<br/>• motion-engine (OCP)<br/>• saas-boilerplate (DIP)"]
     M4 --> M5["05 - Projeto Prático Hands-On<br/>• Validação com FormValidator<br/>• Entidades Ricas com Product<br/>• UseCase & Injeção de Dependências<br/>• Terminal Motion Timeline"]
@@ -67,7 +67,7 @@ flowchart TD
 
 | Módulo | Descrição do Conteúdo | Laboratório / Código |
 | :--- | :--- | :--- |
-| **[`01-fundamentals/`](./01-fundamentals/)** | Por que TypeScript existe, segurança em tempo de compilação, imutabilidade, contratos com `interface`, afunilamento de tipos (*narrowing*) e parâmetros genéricos `<T>`. | [`01-primitives-and-unions.ts`](./01-fundamentals/playground/01-primitives-and-unions.ts)<br/>[`02-generics-in-practice.ts`](./01-fundamentals/playground/02-generics-in-practice.ts)<br/>[`03-discriminated-unions.ts`](./01-fundamentals/playground/03-discriminated-unions.ts) |
+| **[`01-fundamentals/`](./01-fundamentals/)** | Como instalar Node.js e npm, o que é o TypeScript em essência, por que usar em apps grandes, **onde NÃO faz sentido usar**, segurança em compilação, imutabilidade, `interface`, `narrowing` e Generics `<T>`. | [`01-primitives-and-unions.ts`](./01-fundamentals/playground/01-primitives-and-unions.ts)<br/>[`02-generics-in-practice.ts`](./01-fundamentals/playground/02-generics-in-practice.ts)<br/>[`03-discriminated-unions.ts`](./01-fundamentals/playground/03-discriminated-unions.ts) |
 | **[`02-ecosystem-and-platforms/`](./02-ecosystem-and-platforms/)** | Onde o TypeScript opera em 2026: Frontend unificado (React 19/Next.js Server Actions), Backends modernos (Node/Bun/Deno), Mobile (Expo), Desktop (Tauri/Electron) e AI Agents via MCP. | Guias conceituais com exemplos integrados |
 | **[`03-architecture-and-solid/`](./03-architecture-and-solid/)** | Princípios de Clean Code, Object Calisthenics, S.O.L.I.D. completo com comparações visuais e Clean Architecture com Domain-Driven Design (DDD). | [`01-solid-violations.ts`](./03-architecture-and-solid/examples/01-solid-violations.ts)<br/>[`02-solid-and-clean-arch-refactored.ts`](./03-architecture-and-solid/examples/02-solid-and-clean-arch-refactored.ts) |
 | **[`04-case-studies/`](./04-case-studies/)** | Engenharia reversa em 4 repositórios open-source reais com dissecação de arquitetura e desafios de código práticos para o aluno resolver. | 4 Desafios Práticos com enunciados completos |
