@@ -132,3 +132,4 @@ Se a equipe nunca teve contato com linguagens tipadas e precisa entregar um proj
 * Use JavaScript puro para **scripts rápidos, experimentos de 15 minutos e protótipos descartáveis**.
 
 Agora que você já entende a essência e o propósito da ferramenta, vamos aos fundamentos práticos no próximo capítulo!
+

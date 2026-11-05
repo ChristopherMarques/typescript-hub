@@ -85,34 +85,51 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="w-full max-w-2xl bg-[#0f141d] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-        {/* Input Header */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-slate-800 bg-[#141b27]">
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center pt-4 sm:pt-20 px-3 sm:px-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-150"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-2xl bg-[#0f141d] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Input Header com Botão Fechar Explícito */}
+        <div className="flex items-center gap-2 sm:gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 border-b border-slate-800 bg-[#141b27]">
           <Search className="w-5 h-5 text-brand-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
-            placeholder="Digite para buscar conceitos, SOLID, Generics, UseCases..."
+            placeholder="Buscar conceitos, SOLID, Generics..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none font-medium"
+            className="flex-1 min-w-0 bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none font-medium"
           />
+
+          {/* Botão de Limpar Texto */}
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="p-1 rounded text-slate-500 hover:text-slate-300"
+              className="p-1 rounded text-slate-400 hover:text-slate-200 transition shrink-0"
+              aria-label="Limpar texto"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
-            ESC
-          </kbd>
+
+          {/* Botão Fechar: Botão claro com "Fechar" no mobile e "ESC" no desktop */}
+          <button
+            onClick={onClose}
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:px-2.5 sm:py-1 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 hover:text-white transition text-xs font-semibold shrink-0 border border-slate-700"
+            aria-label="Fechar busca"
+          >
+            <X className="w-4 h-4 sm:hidden text-brand-400" />
+            <span className="sm:hidden">Fechar</span>
+            <span className="hidden sm:inline font-mono text-[11px] text-slate-400">ESC</span>
+          </button>
         </div>
 
         {/* Results List */}
-        <div className="max-h-96 overflow-y-auto p-2 divide-y divide-slate-800/40">
+        <div className="flex-1 overflow-y-auto p-2 divide-y divide-slate-800/40">
           {query && results.length === 0 && (
             <div className="p-8 text-center text-sm text-slate-500">
               Nenhum resultado encontrado para "<span className="text-slate-300">{query}</span>".
@@ -120,20 +137,28 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           )}
 
           {!query && (
-            <div className="p-6 text-xs text-slate-500 flex flex-col gap-2">
-              <span className="font-semibold text-slate-400 uppercase tracking-wider">Dicas Rápidas de Busca</span>
+            <div className="p-4 sm:p-6 text-xs text-slate-500 flex flex-col gap-2">
+              <span className="font-semibold text-slate-400 uppercase tracking-wider">
+                Dicas Rápidas de Busca
+              </span>
               <div className="flex flex-wrap gap-2 pt-1">
-                {["Discriminated Unions", "Generics", "SRP", "LSP", "Clean Architecture", "Product Entity"].map(
-                  (term) => (
-                    <button
-                      key={term}
-                      onClick={() => setQuery(term)}
-                      className="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition text-[11px]"
-                    >
-                      {term}
-                    </button>
-                  )
-                )}
+                {[
+                  "Node.js",
+                  "Discriminated Unions",
+                  "Generics",
+                  "SRP",
+                  "LSP",
+                  "Clean Architecture",
+                  "Product Entity",
+                ].map((term) => (
+                  <button
+                    key={term}
+                    onClick={() => setQuery(term)}
+                    className="px-2.5 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-slate-300 transition text-[11px] touch-manipulation"
+                  >
+                    {term}
+                  </button>
+                ))}
               </div>
             </div>
           )}
@@ -145,20 +170,20 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 onSelectDoc(res.id);
                 onClose();
               }}
-              className="w-full text-left p-3 rounded-xl hover:bg-slate-800/60 transition group flex flex-col gap-1"
+              className="w-full text-left p-3 rounded-xl hover:bg-slate-800/60 active:bg-slate-800/80 transition group flex flex-col gap-1 touch-manipulation"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 truncate">
                   {res.isCode ? (
                     <FileCode className="w-4 h-4 text-amber-400 shrink-0" />
                   ) : (
                     <FileText className="w-4 h-4 text-brand-400 shrink-0" />
                   )}
-                  <span className="text-sm font-semibold text-white group-hover:text-brand-300 transition">
+                  <span className="text-sm font-semibold text-white group-hover:text-brand-300 transition truncate">
                     {res.title}
                   </span>
                 </div>
-                <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+                <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 uppercase tracking-wider shrink-0">
                   {res.sectionTitle}
                 </span>
               </div>
@@ -170,16 +195,31 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-4 py-2 bg-[#0b0f17] border-t border-slate-800 text-[11px] text-slate-500 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="px-4 py-2.5 bg-[#0b0f17] border-t border-slate-800 text-[11px] text-slate-500 flex items-center justify-between">
+          <div className="hidden sm:flex items-center gap-4">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px]">Enter</kbd> para selecionar
+              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px]">
+                Enter
+              </kbd>{" "}
+              para selecionar
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px]">Esc</kbd> para fechar
+              <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px]">
+                Esc
+              </kbd>{" "}
+              para fechar
             </span>
           </div>
-          <span className="text-brand-400 font-semibold">Busca Full-Text Ativa</span>
+
+          <button
+            onClick={onClose}
+            className="sm:hidden text-xs text-slate-300 hover:text-white font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-slate-800/80"
+          >
+            <X className="w-3.5 h-3.5" />
+            <span>Fechar Janela</span>
+          </button>
+
+          <span className="text-brand-400 font-semibold text-[11px]">Busca Full-Text Ativa</span>
         </div>
       </div>
     </div>
