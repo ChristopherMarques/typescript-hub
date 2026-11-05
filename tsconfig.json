@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    /* 🎯 Versão Alvo e Bibliotecas */
+    "target": "ES2022",                          /* Versão do JavaScript emitido: suporte nativo a recursos modernos como Top-level await e Private Class Fields */
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],   /* Bibliotecas de tipos inclusas (ECMAScript 2022 + APIs do Navegador para a Web) */
+    "module": "ESNext",                          /* Sistema de módulos moderno com suporte completo a ESM e Bundlers */
+    "moduleResolution": "Bundler",              /* Resolução de módulos Bundler (compatível com Vite, TSX e Node 20+) */
+    "types": ["node", "vite/client"],           /* Definições de ambiente para Node.js e Vite (import.meta.glob) */
+
+    /* 🛡️ Rigor e Segurança do Sistema de Tipos (Strict Mode) */
+    "strict": true,                              /* Ativa todas as checagens estritas do TypeScript (não negociável em 2026) */
+    "noImplicitAny": true,                       /* Erro se uma variável ou parâmetro inferir 'any' implicitamente */
+    "strictNullChecks": true,                    /* 'null' e 'undefined' são tipos distintos; evita erros clássicos de 'cannot read property of undefined' */
+    "strictFunctionTypes": true,                 /* Checagem contravariante para parâmetros de funções */
+    "strictBindCallApply": true,                 /* Garante que bind, call e apply usem argumentos válidos para a assinatura da função */
+    "strictPropertyInitialization": true,        /* Garante que propriedades de classes sejam inicializadas no construtor */
+    "noImplicitThis": true,                      /* Erro se o 'this' em funções tiver tipo 'any' implícito */
+    "alwaysStrict": true,                        /* Emite 'use strict' em todos os arquivos de saída */
+
+    /* 🔍 Boas Práticas Adicionais de Qualidade de Código */
+    "noUnusedLocals": true,                      /* Alerta contra variáveis locais declaradas mas nunca utilizadas */
+    "noUnusedParameters": true,                  /* Alerta contra parâmetros de função não consumidos */
+    "noImplicitReturns": true,                   /* Garante que todas as ramificações de código em uma função retornem um valor */
+    "noFallthroughCasesInSwitch": true,          /* Previne bugs sutis de 'fallthrough' em declarações switch/case */
+    "noUncheckedIndexedAccess": true,            /* Acesso a arrays/dicionários por índice retorna 'T | undefined', forçando validação defensiva */
+
+    /* ⚙️ Emissão e Interoperabilidade */
+    "jsx": "react-jsx",                          /* Suporte para JSX/TSX moderno sem necessidade de importar React manualmente */
+    "esModuleInterop": true,                     /* Facilita importação de pacotes CommonJS como se fossem módulos ES */
+    "allowSyntheticDefaultImports": true,        /* Permite imports padrão de módulos sem export default explícito */
+    "forceConsistentCasingInFileNames": true,   /* Impede problemas de case-sensitivity entre sistemas operacionais (Windows vs Linux) */
+    "skipLibCheck": true                         /* Ignora checagem de tipos em arquivos .d.ts de terceiros para acelerar compilação */
+  },
+  "include": [
+    "01-fundamentals/**/*",
+    "03-architecture-and-solid/**/*",
+    "05-hands-on-project/**/*",
+    "web/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+
